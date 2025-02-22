@@ -1,4 +1,4 @@
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect} from "react";
 import "./RecipesList.css";
 
 const RecipesList = () => {
@@ -12,7 +12,7 @@ const RecipesList = () => {
         try {
             const response = await fetch("http://localhost:5234/api/recipes");
             if (!response.ok) {
-                throw new Error("Network response was not ok");
+                throw new Error("No connection to localhost:5234");
             }
             const data = await response.json();
             setRecipes(data);
