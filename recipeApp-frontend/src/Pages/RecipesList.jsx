@@ -30,7 +30,7 @@ const RecipesList = () => {
         <div className="recipes-container">
             {recipes.map((recipe) => (
                 <div key={recipe.id} className="recipe-card">
-                    <h2>{recipe.name}</h2>
+                    <h2 className="recipe-name">{recipe.name}</h2>
                     <p>{recipe.description}</p>
                 </div>
             )) }

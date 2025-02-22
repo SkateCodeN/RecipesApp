@@ -5,7 +5,9 @@
     gap: 1rem;
     padding: 1rem;
 }
-
+.recipe-name{
+    color: black;
+}
 /* Individual recipe card styling */
 .recipe-card {
     background-color: #ffffff;
