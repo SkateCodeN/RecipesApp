@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import "./RecipesList.css";
 
 const CreateRecipe = () => {
@@ -56,8 +56,6 @@ const CreateRecipe = () => {
                         value={recipeName}
                         onChange={(e) => setRecipeName(e.target.value)}
                     />
-
-                   
                 </div>
 
                 <div>
