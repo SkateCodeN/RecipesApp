@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  recipes-db:
+    image: postgres:latest
+    container_name: recipes-DB
+    ports:
+      - "5432:5432"
+    env_file:
+      - db.env
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
