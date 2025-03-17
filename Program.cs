@@ -4,12 +4,14 @@ using NoteApp.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+
 //Register the DbContext using connection string
 builder.Services.AddDbContext<RecipesDbContext>(options => 
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
 // Configure CORS to allow requests from your frontend
+//Middleware
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowDevFrontend", policy =>
