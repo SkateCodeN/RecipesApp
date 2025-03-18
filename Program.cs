@@ -10,6 +10,11 @@ builder.Services.AddDbContext<RecipesDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
+// 3-17-2025 Adding the HttpClient to make remote calls to api's
+// WHY: Register this dependancy to use the Service
+
+builder.Services.AddHttpClient<NoteApp.Services.DataService>();
+
 // Configure CORS to allow requests from your frontend
 //Middleware
 builder.Services.AddCors(options =>
@@ -27,6 +32,8 @@ builder.Services.AddCors(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
 
 var app = builder.Build();
 
