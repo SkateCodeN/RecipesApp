@@ -1,5 +1,5 @@
 import React, { useState} from "react";
-import "./RecipesList.css";
+//import "./RecipesList.css";
 
 const CreateRecipe = () => {
 
@@ -45,32 +45,56 @@ const CreateRecipe = () => {
         }
     }
     return (
-        <div className="recipes-container">
-            <div className="recipe-card">
-                <div>
-                    <h3 className="recipe-name">New Recipe</h3>
-                    <label className="recipe-name" htmlFor="name-box">Name</label>
-                    <input 
-                        id="name-box" 
-                        type="text" 
-                        value={recipeName}
-                        onChange={(e) => setRecipeName(e.target.value)}
-                    />
-                </div>
+        <div className="container" style={{width:"300px",padding:"20px 0"}}>
+            <div className="card" >
+                <div className="card-content">
+                    <div className="container">
+                        
+                        <h3 style={{color:"yellow"}}>New Recipe</h3>
 
-                <div>
-                    <label className="recipe-name" htmlFor="description-box">Description</label>
-                    <input 
-                        id="description-box" 
-                        type="text" 
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <button type="button" onClick={handleCreateClick}>Create</button>
-                </div>
+                    </div>
+                    
 
+                    <div className="field">
+                        <label className="label" htmlFor="name-box">Name</label>
+                        <div className="control">
+                            <input 
+                                id="name-box" 
+                                type="text" 
+                                className="input"
+                                value={recipeName}
+                                onChange={(e) => setRecipeName(e.target.value)}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="field">
+                        <label className="label" htmlFor="description-box">Description</label>
+                        <div className="control">
+                            <input 
+                                id="description-box" 
+                                className="input"
+                                type="text" 
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                            />
+                        </div>
+                    
+                    </div>
+
+                    <div className="field">
+                        <div className="control">
+                            <button 
+                                type="button" 
+                                className="button is-link"
+                                onClick={handleCreateClick}
+                            >
+                                Create
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
         </div>
 
