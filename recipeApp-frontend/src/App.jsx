@@ -4,6 +4,7 @@ import RecipesList from './Pages/RecipesList'
 import CreateRecipe from './Pages/CreateRecipe'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
+import ApiRecipe from './Pages/ApiRecipe'
 function App() {
 
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/recipesList" element={<RecipesList />} />
           <Route path="/createRecipe" element={<CreateRecipe />} />
+          <Route path='/apiRecipe' element={<ApiRecipe />} />
         </Routes>
       </BrowserRouter>
       
