@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NoteApp.Data;
 using NoteApp.Models;
+using NoteApp.Services;
 
 namespace NoteApp.Controllers
 {
@@ -11,10 +12,12 @@ namespace NoteApp.Controllers
     public class RecipesController : ControllerBase
     {
         private readonly RecipesDbContext _context;
+        private readonly DataService _dataService;
 
-        public RecipesController(RecipesDbContext context)
+        public RecipesController(RecipesDbContext context, DataService dataService)
         {
             _context = context;
+            _dataService = dataService;
         }
 
         // Get: api/recipes
@@ -88,6 +91,14 @@ namespace NoteApp.Controllers
             
             // Rerurn a 201 created response with a locatio
             return NoContent();
+        }
+
+        //api/recipes/test
+        [HttpGet("test")]
+        public async Task<IActionResult>GetData()
+        {
+            var data = await _dataService.GetDataAsync();
+            return Ok(data);
         }
     }
 }
