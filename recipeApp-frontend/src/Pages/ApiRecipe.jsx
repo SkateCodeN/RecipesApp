@@ -30,6 +30,7 @@ const ApiRecipe = () => {
     return (
         <div className="recipes-container">
             <p>Testing</p>
+            <p>Loading...</p>
         </div>
     )
 }
