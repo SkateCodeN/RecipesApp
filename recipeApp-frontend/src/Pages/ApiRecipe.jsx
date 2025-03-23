@@ -29,10 +29,19 @@ const ApiRecipe = () => {
 
     return (
         <div className="container">
-            <div className="container">
-                <div className="card">
-                    <img src={recipes.meals[0].strMealThumb}  width={"200px"}/>
-                    <h3>{recipes.meals[0].strMeal}</h3>
+            <div className="container is-max-tablet">
+                <div className="card" style={{display:"flex", gap:"20px"}}>
+                    {/* <img src={recipes.meals[0].strMealThumb} width={"200px"}/> */}
+
+                    <div style={{display:"flex", flexDirection:"column"}}>
+                        <h2>{recipes.meals[0].strMeal}</h2>
+                        <div>
+                            <p>
+                                {recipes.meals[0].strInstructions}
+                            </p>
+                            <p>{recipes.meals[0].strCategory}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
