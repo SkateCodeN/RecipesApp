@@ -28,11 +28,13 @@ const ApiRecipe = () => {
     if(!recipes) return <p>Loading data</p>
 
     return (
-        <div className="recipes-container">
-            <p>Testing</p>
-            <p>Loading...</p>
-            <p>Testing 2</p>
-            <p>Rest</p>
+        <div className="container">
+            <div className="container">
+                <div className="card">
+                    <img src={recipes.meals[0].strMealThumb}  width={"200px"}/>
+                    <h3>{recipes.meals[0].strMeal}</h3>
+                </div>
+            </div>
         </div>
     )
 }
