@@ -27,8 +27,9 @@ const Home = () => {
             </div>
             <div className="container" style={{padding:"20px 0"}}>
 
-                {/* Here is the styling for each recipe, you can delete and replace */}
+                {/* the recipe list will go here */}
                 <div className="container is-max-tablet">
+                    {/* Here is the styling for each recipe, you can delete and replace */}
                     <div className="card is-flex">
                         <div style={{width:"60%",backgroundColor:"red"}}>
                             <h2>Recipe Name</h2>
