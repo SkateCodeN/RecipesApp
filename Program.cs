@@ -1,7 +1,13 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NoteApp.Data;
+using DotNetEnv;
+
+// Load environment variables from the .env file
+Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 builder.Services.AddControllers();
 
