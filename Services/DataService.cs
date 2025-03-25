@@ -5,6 +5,7 @@ using System.Text.Json;
 using NoteApp.Controllers;
 using System.Text.Json.Serialization;
 using NoteApp.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace NoteApp.Services
 {
@@ -29,6 +30,33 @@ namespace NoteApp.Services
             };
             var mealResponse = JsonSerializer.Deserialize<MealResponse>(json, options);
             return mealResponse;
+        }
+
+        public async Task<Root> GetTastyData()
+        {
+            string url = "https://tasty.p.rapidapi.com/recipes/list?from=3&size=20&tags=under_30_minutes";
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(url),
+                Headers =
+                {
+                    { "x-rapidapi-key", "{Key}" },
+                { "x-rapidapi-host", "{path}" },
+                },
+
+            };
+            using (var response = await _httpClient.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true,
+                };
+                var body = await response.Content.ReadAsStringAsync();
+                var mealResponse = JsonSerializer.Deserialize<Root>(body,options);
+                return mealResponse;
+            }
         }
     }
 }
