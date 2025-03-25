@@ -12,10 +12,11 @@ namespace NoteApp.Services
     public class DataService
     {
         private readonly HttpClient _httpClient;
-
+        private readonly String? ApiKey;
         public DataService(HttpClient httpClient)
         {
             _httpClient = httpClient;
+            ApiKey = Environment.GetEnvironmentVariable("ApiSettings__ApiKey");
         }
 
         public async Task<MealResponse> GetDataAsync()
@@ -41,8 +42,8 @@ namespace NoteApp.Services
                 RequestUri = new Uri(url),
                 Headers =
                 {
-                    { "x-rapidapi-key", "{Key}" },
-                { "x-rapidapi-host", "{path}" },
+                    { "x-rapidapi-key", ApiKey },
+                    { "x-rapidapi-host", "tasty.p.rapidapi.com" },
                 },
 
             };
