@@ -100,5 +100,13 @@ namespace NoteApp.Controllers
             var data = await _dataService.GetDataAsync();
             return Ok(data);
         }
+
+        //api/recipes/randomList
+        [HttpGet("randomList")]
+        public async Task<IActionResult>GetRandomList()
+        {
+            var data = await _dataService.GetTastyData();
+            return Ok(data);
+        }
     }
 }
