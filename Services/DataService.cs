@@ -6,6 +6,7 @@ using NoteApp.Controllers;
 using System.Text.Json.Serialization;
 using NoteApp.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
+using System.Runtime.CompilerServices;
 
 namespace NoteApp.Services
 {
@@ -58,6 +59,32 @@ namespace NoteApp.Services
                 var mealResponse = JsonSerializer.Deserialize<Root>(body,options);
                 return mealResponse;
             }
+        }
+
+        //Get the raw data from the tasty API when passing params such as tags or 
+        // a recipe name/ingredient ex chicken
+
+        public async Task<string> ProcessTastyApiParams(TastyRequestParams request)
+        {
+            string url = $"https://tasty.p.rapidapi.com/recipes/list?from=3&size=20&tags={request.Tags}";
+            var req = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(url),
+                Headers =
+                {
+                    { "x-rapidapi-key", ApiKey },
+                    { "x-rapidapi-host", "tasty.p.rapidapi.com" },
+                },
+
+            };
+            using(var response = await _httpClient.SendAsync(req))
+            {
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadAsStringAsync();
+            }
+            
+
         }
     }
 }
