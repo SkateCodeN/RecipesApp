@@ -8,3 +8,6 @@ namespace NoteApp.Models
 
     }
 }
+
+//Setting type safety for the incoming params from the front end. THis class is used in the controller 
+// logic. 
