@@ -108,5 +108,18 @@ namespace NoteApp.Controllers
             var data = await _dataService.GetTastyData();
             return Ok(data);
         }
+
+        //POST: /api/recipes/tastyApi/randomList
+        [HttpPost("/tastyApi/randomList")]
+        public async Task<IActionResult> ProcessData([FromBody] TastyRequestParams request)
+        {
+            if(request == null)
+            {
+                return BadRequest("Invalid Data");
+            }
+
+            var result = await _dataService.ProcessTastyApiParams(request);
+            return Ok(result);
+        }
     }
 }
