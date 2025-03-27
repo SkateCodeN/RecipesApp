@@ -10,3 +10,14 @@ services:
       - db.env
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+# Recipes AI DB 
+  recipesAI-db:
+    image: postgres:latest
+    container_name: recipes-ai-DB
+    ports:
+      - "5433:5432"
+    env_file:
+      - ai-db.env
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
