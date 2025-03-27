@@ -20,7 +20,7 @@ builder.Services.AddDbContext<RecipesDbContext>(options =>
 // WHY: Register this dependancy to use the Service
 
 builder.Services.AddHttpClient<NoteApp.Services.DataService>();
-
+builder.Services.AddHttpClient<NoteApp.Services.RecipeAIService>();
 // Configure CORS to allow requests from your frontend
 //Middleware
 builder.Services.AddCors(options =>
