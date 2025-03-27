@@ -13,11 +13,13 @@ namespace NoteApp.Controllers
     {
         private readonly RecipesDbContext _context;
         private readonly DataService _dataService;
+        private readonly RecipeAIService _aiService;
 
-        public RecipesController(RecipesDbContext context, DataService dataService)
+        public RecipesController(RecipesDbContext context, DataService dataService, RecipeAIService aIService)
         {
             _context = context;
             _dataService = dataService;
+            _aiService = aIService;
         }
 
         // Get: api/recipes
@@ -110,7 +112,7 @@ namespace NoteApp.Controllers
         }
 
         //POST: /api/recipes/tastyApi/randomList
-        [HttpPost("/tastyApi/randomList")]
+        [HttpPost("tastyApi/randomList")]
         public async Task<IActionResult> ProcessData([FromBody] TastyRequestParams request)
         {
             if(request == null)
@@ -120,6 +122,14 @@ namespace NoteApp.Controllers
 
             var result = await _dataService.ProcessTastyApiParams(request);
             return Ok(result);
+        }
+
+        //api/recipes/ai/randomList
+        [HttpGet("ai/randomList")]
+        public async Task<IActionResult>GetRandomListAI()
+        {
+            var data = await _aiService.GetAIData2();
+            return Ok(data);
         }
     }
 }
