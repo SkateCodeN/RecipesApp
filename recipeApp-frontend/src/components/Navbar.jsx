@@ -43,7 +43,10 @@ const Navbar = () => {
                             Create Recipe
                         </Link>
                         <Link to="/tasty" className="navbar-item">
-                            Tasty
+                            Tasty API
+                        </Link>
+                        <Link to="/aiRecipes" className="navbar-item">
+                            AI Recipes
                         </Link>
                 </div>
             </div>
