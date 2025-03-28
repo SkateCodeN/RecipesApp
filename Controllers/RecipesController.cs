@@ -72,7 +72,7 @@ namespace NoteApp.Controllers
             return NoContent();
         }
 
-        // Update By id
+        // Update By api/recipes/id
         [HttpPut("{id}")]
         public async Task<ActionResult<Recipe>> UpdateRecipeById(int id,[FromBody] Recipe updatedRecipe)
         {
