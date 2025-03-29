@@ -1,13 +1,15 @@
-CREATE TABLE ai_recipes (
+CREATE TABLE airecipes (
   id SERIAL PRIMARY KEY,
-  jsonData JSON,
+  jsondata JSON,
   recipe_count integer
 );
 
 -- Insert sample data
-INSERT INTO ai_recipes (jsonData)
+INSERT INTO airecipes (jsondata,recipe_count)
 VALUES
-  (` {
+  (
+  $json$
+  [{
     "name": "Spaghetti Carbonara",
     "description": "A classic Italian pasta dish featuring a creamy egg sauce, crispy pancetta, and a generous amount of Parmesan cheese.",
     "ingredients": [
@@ -177,5 +179,6 @@ VALUES
       "Bake for 10-12 minutes until the edges are golden brown.",
       "Allow the cookies to cool on the baking sheet for a few minutes before transferring to a wire rack."
     ]
-  }`, 7)
+  }
+  ]$json$, 7);
   
