@@ -48,6 +48,9 @@ const Navbar = () => {
                         <Link to="/aiRecipes" className="navbar-item">
                             AI Recipes
                         </Link>
+                        <Link to="/aidbRecipes" className="navbar-item">
+                            AI Recipes DB
+                        </Link>
                 </div>
             </div>
         </nav>
