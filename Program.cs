@@ -16,6 +16,10 @@ builder.Services.AddDbContext<RecipesDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
+//adds the ai db context
+builder.Services.AddDbContext<AiDbContext>(options => 
+    options.UseNpgsql(builder.Configuration.GetConnectionString("AiDbConnection"))
+);
 // 3-17-2025 Adding the HttpClient to make remote calls to api's
 // WHY: Register this dependancy to use the Service
 
