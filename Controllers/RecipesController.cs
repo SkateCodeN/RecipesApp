@@ -15,11 +15,19 @@ namespace NoteApp.Controllers
         private readonly DataService _dataService;
         private readonly RecipeAIService _aiService;
 
-        public RecipesController(RecipesDbContext context, DataService dataService, RecipeAIService aIService)
+        private readonly AiDbContext _aiContext;
+        public RecipesController
+        (
+            RecipesDbContext context, 
+            DataService dataService, 
+            RecipeAIService aIService,
+            AiDbContext aiDbContext
+        )
         {
             _context = context;
             _dataService = dataService;
             _aiService = aIService;
+            _aiContext = aiDbContext;
         }
 
         // Get: api/recipes
@@ -95,6 +103,11 @@ namespace NoteApp.Controllers
             return NoContent();
         }
 
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+
         //api/recipes/test
         [HttpGet("test")]
         public async Task<IActionResult>GetData()
@@ -131,5 +144,20 @@ namespace NoteApp.Controllers
             var data = await _aiService.GetAIData2();
             return Ok(data);
         }
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        //GET: api/recipes/aidb
+        [HttpGet("aidb")]
+        public async Task<ActionResult<IEnumerable<AiRecipe>>> GetAiRecipes()
+        {
+            var recipes = await _aiContext.AiRecipes.ToListAsync();
+            return Ok(recipes);
+
+        }
+
     }
 }
