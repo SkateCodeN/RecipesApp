@@ -14,7 +14,7 @@ namespace NoteApp.Services
     public class RecipeAIService
     {
         private readonly HttpClient _httpClient;
-        private readonly String? ApiKey;
+        private readonly string? ApiKey;
         public RecipeAIService(HttpClient httpClient)
         {
             _httpClient = httpClient;
