@@ -180,5 +180,6 @@ VALUES
       "Allow the cookies to cool on the baking sheet for a few minutes before transferring to a wire rack."
     ]
   }
-  ]$json$, 7);
+  ]
+  $json$, 7);
   
