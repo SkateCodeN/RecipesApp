@@ -52,9 +52,9 @@ const TastyAPI = () => {
                         </div>
                         <footer className='card-footer'>
                             
-                            <a href="#" class="card-footer-item">Save</a>
-                            <a href="#" class="card-footer-item">Edit</a>
-                            <a href="#" class="card-footer-item">Delete</a>
+                            <a href="#" className="card-footer-item">Save</a>
+                            <a href="#" className="card-footer-item">Edit</a>
+                            <a href="#" className="card-footer-item">Delete</a>
                         </footer>
                         
                     </div>
