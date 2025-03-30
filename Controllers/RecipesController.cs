@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using NoteApp.Data;
 using NoteApp.Models;
 using NoteApp.Services;
+using System.Text.Json;
 
 namespace NoteApp.Controllers
 {
@@ -155,6 +156,8 @@ namespace NoteApp.Controllers
         public async Task<ActionResult<IEnumerable<AiRecipe>>> GetAiRecipes()
         {
             var recipes = await _aiContext.AiRecipes.ToListAsync();
+            
+            
             return Ok(recipes);
 
         }
