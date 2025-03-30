@@ -31,7 +31,7 @@ const AiDbRecipe = () => {
         <div className="container">
             <div className="container is-max-tablet">
                 <div className="card" style={{display:"flex", gap:"20px"}}>
-                   <p>{recipes && recipes[0].jsonData[0].name}</p>
+                   
                 </div>
             </div>
         </div>
