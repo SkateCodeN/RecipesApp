@@ -16,10 +16,8 @@ namespace NoteApp.Models
         [Column("recipe_count")]
         public int? Recipe_Count {get; set;}
         
-
     }
 
-   
     public class JsonRecipes 
     {
         [JsonPropertyName("name")]
