@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 
 const AiDbRecipe = () => {
@@ -18,21 +18,51 @@ const AiDbRecipe = () => {
             setRecipes(data);
             console.log("Data", data);
         }
-        catch(error)
-        {
+        catch (error) {
             console.log('Error fetching recipes', error);
         }
 
     }
 
-    if(!recipes) return <p>Loading data</p>
+    if (!recipes) return <p>Loading data</p>
 
     return (
         <div className="container">
             <div className="container is-max-tablet">
-                <div className="card" style={{display:"flex", gap:"20px"}}>
-                   
-                </div>
+
+                {
+                    recipes && recipes[0].data.map((recipe) => (
+
+                        <div key={recipe.name} className='card' style={{ width: "400px" }}>
+                            <div className='card-img'>
+                                <figure className='image is-4by3"'>
+                                    <h3>Ai Gen</h3>
+                                </figure>
+                            </div>
+
+                            <div className='card-content'>
+                                <div className='media'>
+                                    <div className='media-content'>
+                                        <p className='title is-4'>{recipe.name}</p>
+                                    </div>
+                                </div>
+
+                                <div className='content' >
+                                    {recipe.description}
+                                </div>
+
+                            </div>
+                            <footer className='card-footer'>
+
+                                <a href="#" className="card-footer-item">Save</a>
+                                <a href="#" className="card-footer-item">Edit</a>
+                                <a href="#" className="card-footer-item">Delete</a>
+                            </footer>
+
+                        </div>
+                    ))
+                }
+
             </div>
         </div>
     )
