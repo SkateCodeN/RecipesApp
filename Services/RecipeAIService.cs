@@ -18,20 +18,20 @@ namespace NoteApp.Services
         public RecipeAIService(HttpClient httpClient)
         {
             _httpClient = httpClient;
-            _httpClient.Timeout = TimeSpan.FromSeconds(65);
-            ApiKey = Environment.GetEnvironmentVariable("ApiSettings__ApiKey");
+            //_httpClient.Timeout = TimeSpan.FromSeconds(80);
+            ApiKey = Environment.GetEnvironmentVariable("ApiSettings__ApiKey2");
         }
 
         public async Task<AIResponse> GetAIData2()
         {
             int number = 5;
             string userMessage = $@"I will give you a number, your output will be a JSON, and a number of real random 
-            recipe/recipes. Output its name, description, ingredients and amounts, cook time, prep time,
-            instructions, and url of where you got the recipe. 
-            The output should be in JSON format,  the output should be ready to be sent to postges db as json 
+            recipe/recipes. Output its name, description, ingredients and amounts, cook time, prep time, and
+            instructions. 
+            Only output a valid JSON, no other words are necessary
             Number of recipes is {number}";
 
-            string url = "https://chatgpt-42.p.rapidapi.com/o3mini";
+            string url = "https://chatgpt-42.p.rapidapi.com/gpt4";
 
             //create an anonymous obj for the payload
             var payloadObj =  new {
@@ -62,15 +62,15 @@ namespace NoteApp.Services
                     }
                 }
             };
-            using (var response = await _httpClient.SendAsync(request))
+            using (var response = await _httpClient.SendAsync(request,HttpCompletionOption.ResponseContentRead))
             {
                 //We use a stream to wait for the full response from the AI API
                 response.EnsureSuccessStatusCode();
-                using var stream = await response.Content.ReadAsStreamAsync();
-                using var reader = new StreamReader(stream);
-                string fullResponse = await reader.ReadToEndAsync();
-                //var body = await response.Content.ReadAsStringAsync();
-                var body = fullResponse;
+                //using var stream = await response.Content.ReadAsStreamAsync();
+                ///using var reader = new StreamReader(stream);
+                //string fullResponse = await reader.ReadToEndAsync();
+                var body = await response.Content.ReadAsStringAsync();
+                //var body = fullResponse;
                 var options = new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true,
