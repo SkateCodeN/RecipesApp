@@ -24,7 +24,7 @@ const AiDbRecipe = () => {
 
     }
 
-    if (!recipes) return <p>Loading data</p>
+    if (!recipes | recipes.length === 0) return <p>Loading data</p>
 
     return (
         <div className="container">
