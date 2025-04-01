@@ -5,6 +5,7 @@ using NoteApp.Data;
 using NoteApp.Models;
 using NoteApp.Services;
 using System.Text.Json;
+using System.Diagnostics.CodeAnalysis;
 
 namespace NoteApp.Controllers
 {
@@ -17,6 +18,7 @@ namespace NoteApp.Controllers
         private readonly RecipeAIService _aiService;
 
         private readonly AiDbContext _aiContext;
+       
         public RecipesController
         (
             RecipesDbContext context, 
@@ -29,6 +31,7 @@ namespace NoteApp.Controllers
             _dataService = dataService;
             _aiService = aIService;
             _aiContext = aiDbContext;
+            
         }
 
         // Get: api/recipes
@@ -143,10 +146,39 @@ namespace NoteApp.Controllers
         public async Task<IActionResult>GetRandomListAI()
         {
             var data = await _aiService.GetAIData2();
+
+            //send data to the DB
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+            };
+            
+            //var cleanedJson = cleanAiResponse(data.Result);
+
+            // AiRecipeResponse? responseData = JsonSerializer.Deserialize<AiRecipeResponse>(cleanedJson, options);
+            // List<JsonRecipes>? recipesList = responseData?.Recipes;
+
+            // var recipesFromAiApi = new AiRecipe
+            // {
+            //     Data = recipesList,
+            //     Recipe_Count = 5
+
+
+            // };
+
+           // _aiContext.AiRecipes.Add(recipesFromAiApi);
+            Console.Write(data.Result);
+            
+            //await _aiContext.SaveChangesAsync();
             return Ok(data);
         }
-
-
+    public string cleanAiResponse(string data)
+    {
+        var cleanedData = data.Trim('`');
+        //remove everything before 4
+        return cleanedData[4..];
+    }
+        
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -156,7 +188,6 @@ namespace NoteApp.Controllers
         public async Task<ActionResult<IEnumerable<AiRecipe>>> GetAiRecipes()
         {
             var recipes = await _aiContext.AiRecipes.ToListAsync();
-            
             
             return Ok(recipes);
 
