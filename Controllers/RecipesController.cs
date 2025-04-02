@@ -153,21 +153,27 @@ namespace NoteApp.Controllers
                 PropertyNameCaseInsensitive = true,
             };
             
-            //var cleanedJson = cleanAiResponse(data.Result);
+            var cleanedJson = cleanAiResponse(data.Result);
 
-            // AiRecipeResponse? responseData = JsonSerializer.Deserialize<AiRecipeResponse>(cleanedJson, options);
+             Console.Write(data.Result);
+
+            AiRecipeResponse? responseData = JsonSerializer.Deserialize<AiRecipeResponse>(cleanedJson, options);
+            if(responseData == null || responseData.Recipes == null)
+            {
+                return BadRequest("Invalid JSON data");
+            }
+
+
             // List<JsonRecipes>? recipesList = responseData?.Recipes;
 
-            // var recipesFromAiApi = new AiRecipe
-            // {
-            //     Data = recipesList,
-            //     Recipe_Count = 5
+            var recipesFromAiApi = new AiRecipe
+            {
+                Data = responseData.Recipes,
+                Recipe_Count = 5
+            };
 
-
-            // };
-
-           // _aiContext.AiRecipes.Add(recipesFromAiApi);
-            Console.Write(data.Result);
+           _aiContext.AiRecipes.Add(recipesFromAiApi);
+           
             
             //await _aiContext.SaveChangesAsync();
             return Ok(data);
