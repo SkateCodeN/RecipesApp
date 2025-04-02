@@ -69,15 +69,27 @@ namespace NoteApp.Services
                 //using var stream = await response.Content.ReadAsStreamAsync();
                 ///using var reader = new StreamReader(stream);
                 //string fullResponse = await reader.ReadToEndAsync();
-                var body = await response.Content.ReadAsStringAsync();
-                //var body = fullResponse;
-                var options = new JsonSerializerOptions
+
+                var readTask = response.Content.ReadAsStringAsync();
+                var timeoutTask = Task.Delay(TimeSpan.FromSeconds(65));
+
+                if(await Task.WhenAny(readTask, timeoutTask) == readTask)
                 {
-                    PropertyNameCaseInsensitive = true,
-                };
+                    string fullResponse = await readTask;
+
+                    var options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true,
+                    };
+
+                    var aiResponse = JsonSerializer.Deserialize<AIResponse>(fullResponse,options);
+                    return aiResponse;
+                }
+                else
+                {
+                    throw new TimeoutException("Timeout...");
+                } 
                 
-                var aiResponse = JsonSerializer.Deserialize<AIResponse>(body,options);
-                return aiResponse;
             }
         }
 
