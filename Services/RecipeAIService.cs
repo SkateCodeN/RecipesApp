@@ -26,7 +26,7 @@ namespace NoteApp.Services
         {
             int number = 5;
             string userMessage = $@"I will give you a number, your output will be a JSON, and a number of real random 
-            recipe/recipes. Output its name, description, ingredients and amounts, cook time, prep time, and
+            recipe/recipes. Output its name, description, ingredients and amounts as a list, cook time, prep time, and
             instructions. 
             Only output a valid JSON, no other words are necessary
             Number of recipes is {number}";
@@ -71,10 +71,10 @@ namespace NoteApp.Services
                 //string fullResponse = await reader.ReadToEndAsync();
 
                 var readTask = response.Content.ReadAsStringAsync();
-                var timeoutTask = Task.Delay(TimeSpan.FromSeconds(65));
+                // var timeoutTask = Task.Delay(TimeSpan.FromSeconds(20));
 
-                if(await Task.WhenAny(readTask, timeoutTask) == readTask)
-                {
+                // if(await Task.WhenAny(readTask, timeoutTask) == readTask)
+                // {
                     string fullResponse = await readTask;
 
                     var options = new JsonSerializerOptions
@@ -84,11 +84,11 @@ namespace NoteApp.Services
 
                     var aiResponse = JsonSerializer.Deserialize<AIResponse>(fullResponse,options);
                     return aiResponse;
-                }
-                else
-                {
-                    throw new TimeoutException("Timeout...");
-                } 
+                // }
+                // else
+                // {
+                //     throw new TimeoutException("Timeout...");
+                // } 
                 
             }
         }
