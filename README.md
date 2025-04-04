@@ -18,6 +18,10 @@ POSTGRES_DB=[your_db_name]
 POSTGRES_USER=[your_username]
 POSTGRES_PASSWORD=[your_password]
 
+For the ai db you will also need the following: 
+
+TODO: 
+
 then in the terminal head over to /docker-db and run the docker-composer file with
     docker-compose up -d 
 
