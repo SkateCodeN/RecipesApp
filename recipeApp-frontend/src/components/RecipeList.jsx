@@ -4,18 +4,20 @@ import Recipe from "./Recipe";
 const RecipeList =({count}) =>{
     
     const [recipeList, setRecipeList] = useState([]);
+    console.log(`count is ${count}`);
 
-    const test =() =>{
-        for(let i = 0; i < count; i++){
-            return <Recipe />
-        }
+    let newList = [];
+    
+    for(let i = 0; i < count; i++){
+        newList.push(<Recipe key={i} />);
     }
+    
    
     
     return(
         <div>
             { 
-                test()
+                newList
             }
         </div>
     )
