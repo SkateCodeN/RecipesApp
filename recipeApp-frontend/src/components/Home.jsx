@@ -1,6 +1,11 @@
-
+import React,{useState} from "react";
 import RecipeList from "./RecipeList";
 const Home = () => {
+    const [recipeCount, setRecipeCount] = useState(0);
+
+    const handleInputChange = (e) => {
+        setRecipeCount(e.target.value);
+    }
     return (
         <div className="is-flex is-flex-direction-column">
             <div className="container">
@@ -18,6 +23,7 @@ const Home = () => {
                                 className="input is-normal"
                                 type="text"
                                 placeholder="Enter Count"
+                                onChange={handleInputChange}
                             />
                             <button className="button is-primary">Get Recipes</button>
                         </div>
@@ -30,7 +36,7 @@ const Home = () => {
                 {/* the recipe list will go here */}
                 <div className="container is-max-tablet">
                     {/* Here is the styling for each recipe, you can delete and replace */}
-                    <RecipeList count={3} />
+                    <RecipeList count={recipeCount} />
                 </div>
             </div>
         </div>
