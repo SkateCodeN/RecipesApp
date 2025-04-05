@@ -1,5 +1,5 @@
 
-import Recipe from "./Recipe";
+import RecipeList from "./RecipeList";
 const Home = () => {
     return (
         <div className="is-flex is-flex-direction-column">
@@ -30,7 +30,7 @@ const Home = () => {
                 {/* the recipe list will go here */}
                 <div className="container is-max-tablet">
                     {/* Here is the styling for each recipe, you can delete and replace */}
-                    <Recipe />
+                    <RecipeList count={3} />
                 </div>
             </div>
         </div>
