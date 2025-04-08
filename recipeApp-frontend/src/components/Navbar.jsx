@@ -51,6 +51,9 @@ const Navbar = () => {
                         <Link to="/aidbRecipes" className="navbar-item">
                             AI Recipes DB
                         </Link>
+                        <Link to="/searchTasty" className="navbar-item">
+                            Tasty Recipe
+                        </Link>
                 </div>
             </div>
         </nav>
