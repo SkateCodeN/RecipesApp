@@ -18,11 +18,11 @@ namespace NoteApp.Controllers
         private readonly RecipeAIService _aiService;
 
         private readonly AiDbContext _aiContext;
-       
+
         public RecipesController
         (
-            RecipesDbContext context, 
-            DataService dataService, 
+            RecipesDbContext context,
+            DataService dataService,
             RecipeAIService aIService,
             AiDbContext aiDbContext
         )
@@ -31,7 +31,7 @@ namespace NoteApp.Controllers
             _dataService = dataService;
             _aiService = aIService;
             _aiContext = aiDbContext;
-            
+
         }
 
         // Get: api/recipes
@@ -49,7 +49,7 @@ namespace NoteApp.Controllers
         public async Task<ActionResult<Recipe>> GetRecipeById(int id)
         {
             var recipe = await _context.Recipes.FindAsync(id);
-            if(recipe == null)
+            if (recipe == null)
             {
                 return NotFound();
             }
@@ -65,7 +65,7 @@ namespace NoteApp.Controllers
             _context.Recipes.Add(recipe);
             await _context.SaveChangesAsync();
             // Rerurn a 201 created response with a location header for the new recipe
-            return CreatedAtAction(nameof(GetRecipeById), new {id = recipe.Id}, recipe);
+            return CreatedAtAction(nameof(GetRecipeById), new { id = recipe.Id }, recipe);
         }
 
         //Delete by id
@@ -73,36 +73,36 @@ namespace NoteApp.Controllers
         public async Task<ActionResult<Recipe>> DeleteRecipeById(int id)
         {
             var recipe = await _context.Recipes.FindAsync(id);
-            if(recipe == null)
+            if (recipe == null)
             {
                 return NotFound();
             }
 
             _context.Recipes.Remove(recipe);
             await _context.SaveChangesAsync();
-            
+
             return NoContent();
         }
 
         // Update By api/recipes/id
         [HttpPut("{id}")]
-        public async Task<ActionResult<Recipe>> UpdateRecipeById(int id,[FromBody] Recipe updatedRecipe)
+        public async Task<ActionResult<Recipe>> UpdateRecipeById(int id, [FromBody] Recipe updatedRecipe)
         {
-            
-            if(id != updatedRecipe.Id)
+
+            if (id != updatedRecipe.Id)
             {
                 return BadRequest("ID in URL does not match Id in body.");
             }
             var existingRecipe = await _context.Recipes.FindAsync(id);
-            
 
-            if(existingRecipe == null)
+
+            if (existingRecipe == null)
             {
                 return NotFound();
             }
             _context.Entry(existingRecipe).CurrentValues.SetValues(updatedRecipe);
             await _context.SaveChangesAsync();
-            
+
             // Rerurn a 201 created response with a locatio
             return NoContent();
         }
@@ -110,11 +110,11 @@ namespace NoteApp.Controllers
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
+
 
         //api/recipes/test
         [HttpGet("test")]
-        public async Task<IActionResult>GetData()
+        public async Task<IActionResult> GetData()
         {
             var data = await _dataService.GetDataAsync();
             return Ok(data);
@@ -122,7 +122,7 @@ namespace NoteApp.Controllers
 
         //api/recipes/randomList
         [HttpGet("randomList")]
-        public async Task<IActionResult>GetRandomList()
+        public async Task<IActionResult> GetRandomList()
         {
             var data = await _dataService.GetTastyData();
             return Ok(data);
@@ -132,7 +132,7 @@ namespace NoteApp.Controllers
         [HttpPost("tastyApi/randomList")]
         public async Task<IActionResult> ProcessData([FromBody] TastyRequestParams request)
         {
-            if(request == null)
+            if (request == null)
             {
                 return BadRequest("Invalid Data");
             }
@@ -143,7 +143,7 @@ namespace NoteApp.Controllers
 
         //api/recipes/ai/randomList
         [HttpGet("ai/randomList")]
-        public async Task<IActionResult>GetRandomListAI()
+        public async Task<IActionResult> GetRandomListAI()
         {
             var data = await _aiService.GetAIData2();
 
@@ -152,13 +152,13 @@ namespace NoteApp.Controllers
             {
                 PropertyNameCaseInsensitive = true,
             };
-            
+
             var cleanedJson = cleanAiResponse(data.Result);
 
-             Console.Write(data.Result);
+            Console.Write(data.Result);
 
             AiRecipeResponse? responseData = JsonSerializer.Deserialize<AiRecipeResponse>(cleanedJson, options);
-            if(responseData == null || responseData.Recipes == null)
+            if (responseData == null || responseData.Recipes == null)
             {
                 return BadRequest("Invalid JSON data");
             }
@@ -172,29 +172,29 @@ namespace NoteApp.Controllers
                 Recipe_Count = 5
             };
 
-           _aiContext.AiRecipes.Add(recipesFromAiApi);
-           
-            
+            _aiContext.AiRecipes.Add(recipesFromAiApi);
+
+
             //await _aiContext.SaveChangesAsync();
             return Ok(data);
         }
-    public string cleanAiResponse(string data)
-    {
-        var cleanedData = data.Trim('`');
-        //remove everything before 4
-        return cleanedData[4..];
-    }
-        
+        public string cleanAiResponse(string data)
+        {
+            var cleanedData = data.Trim('`');
+            //remove everything before 4
+            return cleanedData[4..];
+        }
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
+
         //GET: api/recipes/aidb
         [HttpGet("aidb")]
         public async Task<ActionResult<IEnumerable<AiRecipe>>> GetAiRecipes()
         {
             var recipes = await _aiContext.AiRecipes.ToListAsync();
-            
+
             return Ok(recipes);
 
         }
