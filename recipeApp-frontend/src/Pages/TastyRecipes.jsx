@@ -6,10 +6,10 @@ import React, { useState } from "react";
 const TastyRecipes = () => {
 
     const [tag, setTag] = useState("");
-    const [recipes, setRecipes] = useState([]);
+    const [recipes, setRecipes] = useState({});
      
     const handleInputChange = (e) => {
-        setParam(e.target.value);
+        setTag(e.target.value);
     }
 
     const getRecipes = async () => {
@@ -21,16 +21,18 @@ const TastyRecipes = () => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: {
-                    Tags: tag
-                }
+                body: JSON.stringify({
+                    Tags: tag,
+                    NameOrIngredients:""
+
+                })
             });
             if (!response.ok) {
                 throw new Error("No connection to localhost:5234");
             }
             const data = await response.json();
             setRecipes(data);
-            console.log("Data", data);
+            console.log("Data", data.results);
         }
         catch (error) {
             console.log('Error fetching recipes', error);
@@ -39,19 +41,19 @@ const TastyRecipes = () => {
     }
 
     const handleSubmit = () =>{
-
+        getRecipes();
     }
 
     return (
         <div className="container">
-            <div className="card">
-                <label for="paramInput">Input Params for Recipe:</label>
-                <input type="text" id="paramInput" value={param} onChange={handleInputChange}></input>
+            <div className="card is-flex is-flex-row">
+                <label htmlFor="paramInput">Input Params for Recipe:</label>
+                <input type="text" id="paramInput" value={tag} onChange={handleInputChange}></input>
                 <button type="button" className="button is-primary" onClick={handleSubmit} >Submit</button>
             </div>
             <div className="container">
-                <p>Test response from api</p>
-                <p>Param sent: {recipes && recipes}</p>
+                
+                
             </div>
         </div>
 
