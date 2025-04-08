@@ -8,6 +8,7 @@ import ApiRecipe from './Pages/ApiRecipe'
 import TastyAPI from "./Pages/TastyAPI";
 import AIRecipe from './Pages/AIRecipe'
 import AiDbRecipe from './Pages/AiDbRecipe'
+import TastyRecipeSearch from './Pages/TastyRecipes'
 function App() {
 
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/tasty' element={<TastyAPI />} />
           <Route path='/aiDbRecipes' element={<AiDbRecipe />} />
           <Route path='/aiRecipes' element={<AIRecipe />} />
+          <Route path='/searchTasty' element={ <TastyRecipeSearch />} />
         </Routes>
       </BrowserRouter>
       
