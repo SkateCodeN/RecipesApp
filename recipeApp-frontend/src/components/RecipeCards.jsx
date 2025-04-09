@@ -7,8 +7,8 @@ const RecipeCards = ({ recipes }) => {
         <div className="grid is-col-min-15" style={{margin:"20px 0"}}>
 
             {recipes.results && recipes.results.map((recipe) => (
-                <div className="cell">
-                    <div key={recipe.name} className='card' style={{ width: "400px" }}>
+                <div className="cell" key={recipe.name}>
+                    <div  className='card' style={{ width: "400px" }}>
                         <div className='card-img' >
                             <figure className='image is-4by3"'>
                                 <img src={recipe.thumbnail_url}
