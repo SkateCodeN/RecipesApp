@@ -1,0 +1,15 @@
+/* Hide the vertical scrollbar on most modern browsers */
+.scrollable-content {
+    overflow-y: auto;
+    scrollbar-width: none;       /* Firefox */
+    -ms-overflow-style: none;    /* IE and Edge */
+    position: relative;          /* For the gradient overlay */
+  }
+  
+  /* For WebKit browsers (Chrome, Safari, Opera), hide the scrollbar */
+  .scrollable-content::-webkit-scrollbar {
+    display: none;
+  }
+  
+  
+  
