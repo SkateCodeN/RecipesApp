@@ -2,6 +2,7 @@
 // The form takes in a param to send to the backend
 // The tasty recipes component receives a JSon an outputs recipes 
 import React, { useState } from "react";
+import RecipeCards from "../components/RecipeCards.jsx";
 
 const TastyRecipes = () => {
 
@@ -46,14 +47,17 @@ const TastyRecipes = () => {
 
     return (
         <div className="container">
-            <div className="card is-flex is-flex-row">
-                <label htmlFor="paramInput">Input Params for Recipe:</label>
-                <input type="text" id="paramInput" value={tag} onChange={handleInputChange}></input>
-                <button type="button" className="button is-primary" onClick={handleSubmit} >Submit</button>
+            <div className="container is-max-tablet is-flex is-align-items-center is-justify-content-center">
+                <div className="card is-max-tablet is-flex is-flex-direction-column" style={{width:"300px",padding:"20px 20px"}}>
+                    <label htmlFor="paramInput">Input Params for Recipe:</label>
+                    <input style={{padding:"5px 0", margin:"10px 0"}} type="text" id="paramInput" value={tag} onChange={handleInputChange}></input>
+                    <button type="button" className="button is-primary" onClick={handleSubmit} >Submit</button>
+                </div>
             </div>
-            <div className="container">
+            
+            <div className="container ">
                 
-                
+                <RecipeCards recipes={recipes} />
             </div>
         </div>
 
