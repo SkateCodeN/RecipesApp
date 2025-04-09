@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import Recipe from "./Recipe";
 
+//Home Page Displays random recipe suggestions
 const RecipeList =({count}) =>{
     
     const [recipeList, setRecipeList] = useState([]);
