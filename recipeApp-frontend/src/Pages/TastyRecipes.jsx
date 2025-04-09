@@ -41,8 +41,15 @@ const TastyRecipes = () => {
 
     }
 
+   
     const handleSubmit = () =>{
-        getRecipes();
+        if(tag === ""){
+            alert('Tag is empty, go on give us a choice, ex. Chicken')
+        }
+        else{
+            getRecipes();
+        }
+        
     }
 
     return (
