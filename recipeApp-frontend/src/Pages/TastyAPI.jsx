@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import RecipeCards from '../components/RecipeCards.jsx'
 const TastyAPI = () => {
     const [recipes, setRecipes] = useState([]);
     useEffect(() => {
@@ -26,39 +26,9 @@ const TastyAPI = () => {
     return (
         <>
             <div className='container'>
+                <h2>Random List:</h2>
 
-                { recipes.results && recipes.results.map((recipe) => (
-                    <div key={recipe.id} className='card' style={{width:"400px"}}>
-                        <div className='card-img'  >
-                            <figure className='image is-4by3"'>
-                                <img src={recipe.thumbnail_url}
-                                    alt={recipe.slug}
-                                   
-                                />
-                            </figure>
-                        </div>
-
-                        <div className='card-content'>
-                            <div className='media'>
-                                <div className='media-content'>
-                                    <p className='title is-4'>{recipe.name}</p>
-                                </div>
-                            </div>
-
-                            <div className='content' >
-                                {recipe.description}
-                            </div>
-
-                        </div>
-                        <footer className='card-footer'>
-                            
-                            <a href="#" className="card-footer-item">Save</a>
-                            <a href="#" className="card-footer-item">Edit</a>
-                            <a href="#" className="card-footer-item">Delete</a>
-                        </footer>
-                        
-                    </div>
-                ))}
+                <RecipeCards recipes={recipes} />
 
             </div>
         </>
