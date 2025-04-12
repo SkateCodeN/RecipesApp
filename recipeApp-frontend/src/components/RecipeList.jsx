@@ -13,7 +13,6 @@ const RecipeList =({count}) =>{
         newList.push(<Recipe key={i} />);
     }
     
-   
     
     return(
         <div>
