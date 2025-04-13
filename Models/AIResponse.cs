@@ -13,3 +13,5 @@ public class AIResponse
     public string? Server_Code {get; set;}
 
 }
+
+// we can have multiple classes here in a sort of island that holds similar logic
