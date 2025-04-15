@@ -55,3 +55,6 @@ then in the terminal head over to /docker-db and run the docker-composer file wi
     use the following command:
     start start-all.bat
 
+4/14/2025
+TODO: Lets build the structure as well ie lets make sure we have a roadmap of 
+where we want to take this, we need an MVP drawn out
