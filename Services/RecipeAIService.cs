@@ -62,15 +62,15 @@ namespace NoteApp.Services
                     }
                 }
             };
-            using (var response = await _httpClient.SendAsync(request,HttpCompletionOption.ResponseHeadersRead))
+            using (var response = await _httpClient.SendAsync(request))
             {
                 //We use a stream to wait for the full response from the AI API
                 response.EnsureSuccessStatusCode();
-                using var stream = await response.Content.ReadAsStreamAsync();
-                using var reader = new StreamReader(stream);
-                string fullResponse = await reader.ReadToEndAsync();
-
-                var readTask = response.Content.ReadAsStringAsync();
+                //using var stream = await response.Content.ReadAsStreamAsync();
+                //using var reader = new StreamReader(stream);
+                //string fullResponse = await reader.ReadToEndAsync();
+                string fullResponse = await response.Content.ReadAsStringAsync();
+                //var readTask = response.Content.ReadAsStringAsync();
                 // var timeoutTask = Task.Delay(TimeSpan.FromSeconds(20));
 
                 // if(await Task.WhenAny(readTask, timeoutTask) == readTask)
