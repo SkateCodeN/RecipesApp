@@ -8,6 +8,7 @@ using NoteApp.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using System.Runtime.CompilerServices;
 using System.Net.Http.Headers;
+using System.Text;
 
 namespace NoteApp.Services
 {
@@ -34,7 +35,8 @@ namespace NoteApp.Services
             string url = "https://chatgpt-42.p.rapidapi.com/gpt4";
 
             //create an anonymous obj for the payload
-            var payloadObj =  new {
+            var payloadObj = new
+            {
                 messages = new[]
                 {
                     new { role= "user", content = userMessage}
@@ -62,39 +64,45 @@ namespace NoteApp.Services
                     }
                 }
             };
+
+
             using (var response = await _httpClient.SendAsync(request))
             {
-                //We use a stream to wait for the full response from the AI API
-                response.EnsureSuccessStatusCode();
-                //using var stream = await response.Content.ReadAsStreamAsync();
-                //using var reader = new StreamReader(stream);
-                //string fullResponse = await reader.ReadToEndAsync();
-                string fullResponse = await response.Content.ReadAsStringAsync();
-                //var readTask = response.Content.ReadAsStringAsync();
-                // var timeoutTask = Task.Delay(TimeSpan.FromSeconds(20));
+                using (var stream = await response.Content.ReadAsStreamAsync())
+                using (var reader = new StreamReader(stream))
+                {
+                    char[] buffer = new char[8192];
+                    int read;
+                    var fullResponseBuilder = new StringBuilder();
 
-                // if(await Task.WhenAny(readTask, timeoutTask) == readTask)
-                // {
-                //string fullResponse = await readTask;
+                    while ((read = await reader.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                    {
+                        fullResponseBuilder.Append(buffer, 0, read);
+                    }
 
+                    string fullResponse = fullResponseBuilder.ToString();
+                    // Deserialize fullResponse...
                     var options = new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true,
                     };
 
-                    var aiResponse = JsonSerializer.Deserialize<AIResponse>(fullResponse,options);
+                    var aiResponse = JsonSerializer.Deserialize<AIResponse>(fullResponse, options);
                     return aiResponse;
+                }
+
+
                 // }
                 // else
                 // {
                 //     throw new TimeoutException("Timeout...");
                 // } 
-                
+
             }
         }
 
 
     }
-    
+
 }
 
