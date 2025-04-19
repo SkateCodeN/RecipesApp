@@ -103,7 +103,7 @@ namespace NoteApp.Services
 
         public async Task<AIResponse> GetAIData2()
         {
-            int number = 5;
+            int number = 3;
             string userMessage = $@"I will give you a number, your output will be a JSON, and a number of real random 
 recipe/recipes. Output its name, description, ingredients and amounts as a list, cook time, prep time, and
 instructions. 
