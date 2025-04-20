@@ -155,7 +155,7 @@ namespace NoteApp.Controllers
 
             var cleanedJson = cleanAiResponse(data.Result);
 
-            Console.Write(data.Result);
+            Console.Write("cleaned JSON Data ", data.Result);
 
             AiRecipeResponse? responseData = JsonSerializer.Deserialize<AiRecipeResponse>(cleanedJson, options);
             if (responseData == null || responseData.Recipes == null)
