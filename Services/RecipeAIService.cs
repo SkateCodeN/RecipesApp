@@ -105,11 +105,12 @@ namespace NoteApp.Services
         {
             int number = 3;
             string userMessage = $@"I will give you a number, your output will be a JSON, and a number of real random 
-recipe/recipes. Output its name, description, ingredients and amounts as a list, cook time, prep time, and
-instructions. 
-Only output a valid JSON, no other words are necessary.
-Number of recipes is {number}";
+                recipe/recipes. Output its name, description, ingredients and amounts as a list, cook time, prep time, and
+                instructions. 
+                Only output a valid JSON, no other words are necessary.
+                Number of recipes is {number}";
 
+            string messageTest="Recommend a few recipes that have chicken, give me a JSON with the recipe name and a short description";
             string url = "https://chatgpt-42.p.rapidapi.com/gpt4";
 
             // build the payload
