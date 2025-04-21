@@ -153,8 +153,9 @@ namespace NoteApp.Controllers
                 PropertyNameCaseInsensitive = true,
             };
 
-            var cleanedJson = cleanAiResponse(data.Result);
-
+            //var cleanedJson = cleanAiResponse(data.Result);
+            //for testing the message
+            var cleanedJson = data.Result;
             Console.Write("cleaned JSON Data ", data.Result);
 
             AiRecipeResponse? responseData = JsonSerializer.Deserialize<AiRecipeResponse>(cleanedJson, options);
