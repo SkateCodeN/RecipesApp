@@ -60,3 +60,6 @@ TODO: Lets build the structure as well ie lets make sure we have a roadmap of
 where we want to take this, we need an MVP drawn out
 
 -We need to create a suggester that takes a random numbe of recipes 
+
+4/21/2025
+-I have been creating recipes with some descriptions
