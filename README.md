@@ -63,3 +63,6 @@ where we want to take this, we need an MVP drawn out
 
 4/21/2025
 -I have been creating recipes with some descriptions
+
+4/22/More nonsense since I have been coding quite a lot on VB.net and at work, also
+I have been studying for .Net core
