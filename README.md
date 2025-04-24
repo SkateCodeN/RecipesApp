@@ -66,3 +66,6 @@ where we want to take this, we need an MVP drawn out
 
 4/22/More nonsense since I have been coding quite a lot on VB.net and at work, also
 I have been studying for .Net core
+
+4/23/25 I have been uploading more recipes, some mock and some that are not 
+to the database using the webapp. SO that should count for updates made for this app.
