@@ -69,3 +69,6 @@ I have been studying for .Net core
 
 4/23/25 I have been uploading more recipes, some mock and some that are not 
 to the database using the webapp. SO that should count for updates made for this app.
+
+4/24/25 
+Kein Bock man, its hard to continue to write code this week
