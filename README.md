@@ -72,3 +72,6 @@ to the database using the webapp. SO that should count for updates made for this
 
 4/24/25 
 Kein Bock man, its hard to continue to write code this week
+
+4/25/25
+Have been studying PHP, will probably keep until interview
