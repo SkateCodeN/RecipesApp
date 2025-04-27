@@ -75,3 +75,6 @@ Kein Bock man, its hard to continue to write code this week
 
 4/25/25
 Have been studying PHP, will probably keep until interview
+
+4/26/25
+Nothing new we keep studying
