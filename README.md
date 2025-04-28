@@ -78,3 +78,8 @@ Have been studying PHP, will probably keep until interview
 
 4/26/25
 Nothing new we keep studying
+
+4.27.25 
+I have been talking to ChatGPT voice to make sure I get terminology correct and
+and can explain different technologies with a firm grasp of the positives and
+negatives of each.
