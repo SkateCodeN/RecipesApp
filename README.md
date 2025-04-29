@@ -83,3 +83,9 @@ Nothing new we keep studying
 I have been talking to ChatGPT voice to make sure I get terminology correct and
 and can explain different technologies with a firm grasp of the positives and
 negatives of each.
+
+4/28/25
+Had a great interview for transcat, it was Bret Smith, the engineering manager 
+that I had a conversation with. The flow was great and we really got into a 
+relaxed tone. He was positive that I was the right fit and even said I would be 
+his top choice. That felt great.
