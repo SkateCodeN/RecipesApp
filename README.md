@@ -89,3 +89,7 @@ Had a great interview for transcat, it was Bret Smith, the engineering manager
 that I had a conversation with. The flow was great and we really got into a 
 relaxed tone. He was positive that I was the right fit and even said I would be 
 his top choice. That felt great.
+
+5/2/25
+Stopped for a while now I needed to get back in the game.So hopefully, here I am 
+
