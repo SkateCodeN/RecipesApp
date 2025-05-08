@@ -101,3 +101,7 @@ no new update
 
 5/5/25
 Almost there
+
+5/7/25
+The whole thing school is a scam
+there shoould be better ways for schools to fundraise
