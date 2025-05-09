@@ -105,3 +105,6 @@ Almost there
 5/7/25
 The whole thing school is a scam
 there shoould be better ways for schools to fundraise
+
+5/8/2025
+Nothing burger of an update
