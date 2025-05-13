@@ -114,3 +114,6 @@ No new updates
 
 5/11/25
 -happy mothers day
+
+5/12/2025
+Nothing new, almost there to getting the motivation to code again
