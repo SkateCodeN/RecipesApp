@@ -120,3 +120,6 @@ Nothing new, almost there to getting the motivation to code again
 
 5/13/2025
 Heisenberg time
+
+5/14/2025
+T minus 5 days till the new minecraft server is set up!
